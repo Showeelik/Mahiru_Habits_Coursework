@@ -49,7 +49,7 @@ STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
 
 # Custom user model
 
-# AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "users.User"
 
 # LOGIN_REDIRECT_URL = "home"
 
@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'habits',
     'corsheaders',
     'drf_yasg',
+    'users',
     "django_celery_beat",
     "django.contrib.admin",
     "django.contrib.auth",

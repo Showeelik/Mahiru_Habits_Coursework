@@ -1,12 +1,15 @@
 from django.core.exceptions import ValidationError
 
 def validate_habit_fields(instance):
+    if not instance:
+        raise ValidationError("Привычка не найдена.")
+    
     # Время на выполнение должно быть <= 120 секунд
-    if instance.duration > 120:
+    if instance.duration is not None and instance.duration > 120:
         raise ValidationError("Время выполнения привычки не может быть больше 120 секунд.")
 
     # Периодичность не может быть реже 1 раза в 7 дней
-    if instance.period > 7:
+    if instance.period is not None and instance.period > 7:
         raise ValidationError("Привычку нельзя выполнять реже, чем раз в неделю.")
 
     # Одновременное заполнение "связанной привычки" и "вознаграждения"
