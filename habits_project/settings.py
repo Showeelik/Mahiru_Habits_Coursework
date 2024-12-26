@@ -47,9 +47,9 @@ STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
 
 AUTH_USER_MODEL = "users.User"
 
-LOGIN_REDIRECT_URL = "home"
+# LOGIN_REDIRECT_URL = "home"
 
-LOGOUT_REDIRECT_URL = "home"
+# LOGOUT_REDIRECT_URL = "home"
 
 
 # email settings
@@ -68,6 +68,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 INSTALLED_APPS = [
     'rest_framework',
     'habits',
+    'corsheaders',
+    'drf_yasg',
     "django_celery_beat",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -85,6 +87,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = "config.urls"
