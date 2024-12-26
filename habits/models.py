@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from .validators import validate_habit_fields
+
 User = get_user_model()
 
 class Habit(models.Model):
@@ -25,3 +27,7 @@ class Habit(models.Model):
 
     def __str__(self):
         return self.action
+    
+    def save(self, *args, **kwargs):
+        validate_habit_fields(self)
+        super().save(*args, **kwargs)
