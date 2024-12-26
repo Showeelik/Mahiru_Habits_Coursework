@@ -1,9 +1,10 @@
 
 [tool.poetry]
 name = "mahiru_habits_coursework"
-version = "0.1.8"
+version = "0.1.9"
 authors = ["name <email>"]
 readme = "README.md"
+description = 'Проект для управления привычками с использованием Django, Celery и Telegram Bot.'
 
 [tool.poetry.dependencies]
 python = "^3.12"
