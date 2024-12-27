@@ -26,8 +26,9 @@ class Habit(models.Model):
         verbose_name_plural = "Привычки"
 
     def __str__(self):
-        return self.action
+        return f"{self.action} ({'Публичная' if self.is_public else 'Личная'})"
     
     def save(self, *args, **kwargs):
         validate_habit_fields(self)
         super().save(*args, **kwargs)
+    
