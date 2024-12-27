@@ -1,9 +1,10 @@
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
 
 from .validators import validate_habit_fields
 
 User = get_user_model()
+
 
 class Habit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="habits", verbose_name="Создатель")
@@ -12,9 +13,12 @@ class Habit(models.Model):
     time = models.TimeField(verbose_name="Время выполнения")
     is_pleasant = models.BooleanField(default=False, verbose_name="Приятная привычка")
     linked_habit = models.ForeignKey(
-        'self', null=True, blank=True, on_delete=models.SET_NULL,
-        limit_choices_to={'is_pleasant': True},
-        verbose_name="Связанная привычка"
+        "self",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        limit_choices_to={"is_pleasant": True},
+        verbose_name="Связанная привычка",
     )
     reward = models.CharField(max_length=255, blank=True, verbose_name="Вознаграждение")
     period = models.PositiveSmallIntegerField(default=1, verbose_name="Периодичность (в днях)")
@@ -27,8 +31,7 @@ class Habit(models.Model):
 
     def __str__(self):
         return f"{self.action} ({'Публичная' if self.is_public else 'Личная'})"
-    
+
     def save(self, *args, **kwargs):
         validate_habit_fields(self)
         super().save(*args, **kwargs)
-    

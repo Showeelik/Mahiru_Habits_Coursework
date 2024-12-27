@@ -1,7 +1,10 @@
 from celery import shared_task
-from .telegram import send_telegram_message
-from habits.models import Habit
 from django.contrib.auth import get_user_model
+
+from habits.models import Habit
+
+from .telegram import send_telegram_message
+
 
 @shared_task
 def send_habit_reminder(user_id, habit_id):

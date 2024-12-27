@@ -37,12 +37,12 @@ ALLOWED_HOSTS = []
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Redis настройки
-CELERY_BROKER_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
+CELERY_BROKER_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
 
 # Настройка таймзоны
-CELERY_TIMEZONE = 'UTC'
+CELERY_TIMEZONE = "UTC"
 
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
@@ -70,11 +70,11 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework',
-    'habits',
-    'corsheaders',
-    'drf_yasg',
-    'users',
+    "rest_framework",
+    "habits",
+    "corsheaders",
+    "drf_yasg",
+    "users",
     "django_celery_beat",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -92,8 +92,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = "habits_project.urls"
@@ -135,13 +135,13 @@ DATABASES = {
 REST_FRAMEWORK = {
     # Use Django's standard 'django.contrib.auth' permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_PAGINATION_CLASS": "habits.pagination.HabitPagination",
 }
