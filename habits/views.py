@@ -4,12 +4,12 @@ from rest_framework.generics import ListAPIView
 from django.db.models import Q
 from .models import Habit
 from .serializers import HabitSerializer
-from .permissions import IsOwnerOrPublic
+from .permissions import IsOwnerOrReadOnly
 
 class HabitViewSet(ModelViewSet):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
-    permission_classes = [IsAuthenticated, IsOwnerOrPublic]
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
