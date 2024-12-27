@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "username", "email", "password", "first_name", "last_name"]
+        fields = ["id", "username", "email", "password", "first_name", "last_name", "telegram_id"]
 
     def create_user(self, email, password=None, **extra_fields):
         """Создает и возвращает обычного пользователя с email."""

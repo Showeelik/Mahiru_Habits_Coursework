@@ -3,6 +3,7 @@ from django.db import models
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+    telegram_id = models.BigIntegerField(null=True, blank=True)
     
     
     USERNAME_FIELD = "email"
