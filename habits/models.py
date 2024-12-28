@@ -5,7 +5,6 @@ from .validators import validate_habit_fields
 
 User = get_user_model()
 
-
 class Habit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="habits", verbose_name="Создатель")
     action = models.CharField(max_length=255, verbose_name="Действие")
@@ -28,6 +27,7 @@ class Habit(models.Model):
     class Meta:
         verbose_name = "Привычка"
         verbose_name_plural = "Привычки"
+        ordering = ['-id']  # Сортировка по убыванию id
 
     def __str__(self):
         return f"{self.action} ({'Публичная' if self.is_public else 'Личная'})"
